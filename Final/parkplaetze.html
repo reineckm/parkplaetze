@@ -1,0 +1,31 @@
+<html ng-app="ParkApp">
+<head>
+<meta charset="utf-8">
+<title>Parkplätze in Köln</title>
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="parkplaetze.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+	<h3 ng-show="appState == 'loading'">Parkplätze in Köln werden geladen...</h3>
+	<h3 ng-show="appState == 'done'">Parkplätze in Köln:</h3>
+	<p>Dieses Tool zeigt die momentane Kapizätat der Parkhäuser in Köln an. Mit einem Klick auf den Namen, kommt man zu
+		einer Karte.<a ng-click="loadData()" href="#"><i class="icon-refresh"></i></a></p>
+	<table class="table table-hover" ng-show="appState == 'done'">
+		<thead>
+			<tr>
+				<th>Name <a ng-click="order('link')" href="#"><i class="icon-resize-vertical"></i></a></th>
+				<th>Frei Plätze <a ng-click="order('free')" href="#"><i class="icon-resize-vertical"></i></a></th>
+				<th>Tendenz <a ng-click="order('tendenz')" href="#"><i class="icon-resize-vertical"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="parkplatz in data | orderBy:predicate:reverse">
+				<td><a href="{{parkplatz.link}}">{{parkplatz.name}}</a></td>
+				<td>{{parkplatz.free}}</td>
+				<td><i class="{{parkplatz.trend}}"></i></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
