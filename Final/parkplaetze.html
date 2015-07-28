@@ -9,8 +9,8 @@
 <body ng-controller="MainCtrl">
 	<h3 ng-show="appState == 'loading'">Parkplätze in Köln werden geladen...</h3>
 	<h3 ng-show="appState == 'done'">Parkplätze in Köln:</h3>
-	<p>Dieses Tool zeigt die momentane Kapizätat der Parkhäuser in Köln an. Mit einem Klick auf den Namen, kommt man zu
-		einer Karte.<a ng-click="loadData()" href="#"><i class="icon-refresh"></i></a></p>
+	<p>Dieses Tool zeigt die momentan freien Plätze der Parkhäuser in Köln an. Mit einem Klick auf den Namen, kommt man zu
+		einer Karte des Parkhauses. Mit den Doppelpfeilen kann die Tabelle sortierte werden und so neu geladen werden: <a ng-click="loadData()" href="#"><i class="icon-refresh"></i></a></p>
 	<table class="table table-hover" ng-show="appState == 'done'">
 		<thead>
 			<tr>
